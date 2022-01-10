@@ -16,7 +16,7 @@ while True:
 	ax.scatter(rw.x_values, rw.y_values, c= point_numbers, cmap =plt.cm.Blues, 
 		edgecolors ='none', s=1)
 
-	#Mark the startubg and ending points.
+	#Mark the starting and ending points.
 	ax.scatter(0,0, c ='green', edgecolors ='none', s=1)
 	ax.scatter(rw.x_values[-1], rw.y_values[-1], c = 'red',edgecolors ='none', s=1)
 	
