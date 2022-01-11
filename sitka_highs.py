@@ -3,12 +3,12 @@ from datetime import datetime
 
 import matplotlib.pyplot as plt
 
-filename = 'data/sitka_weather_07-2018_simple.csv'
+filename = 'data/sitka_weather_2018_simple.csv'
 with open (filename) as f:
 	reader = csv.reader(f)
 	header_row =next(reader)
-	for index, column_header in enumerate(header_row):
-		print (index,column_header)
+	#for index, column_header in enumerate(header_row):
+		#print (index,column_header)
 
 	#Get dates and high temperatures from this file.
 	dates,highs =[],[]
@@ -18,8 +18,8 @@ with open (filename) as f:
 		dates.append(current_date)
 		highs.append(high)
 
-	print ("\nHighs:\n")
-	print (highs)
+	#print ("\nHighs:\n")
+	#print (highs)
 
 	#Plot the high temperatures.
 	plt.style.use('seaborn')
@@ -27,7 +27,7 @@ with open (filename) as f:
 	ax.plot(dates,highs,c='red')
 
 	#Format plot.
-	plt.title("Daily high temperatures, July 2018", fontsize=24)
+	plt.title("Daily high temperatures - 2018", fontsize=24)
 	plt.xlabel('', fontsize =16)
 	fig.autofmt_xdate()
 	plt.ylabel("Temperature(F)", fontsize =16)
