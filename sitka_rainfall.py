@@ -7,8 +7,8 @@ filename = 'data/sitka_weather_2018_simple.csv'
 with open (filename) as f:
 	reader = csv.reader(f)
 	header_row =next(reader)
-	#for index, column_header in enumerate(header_row):
-		#print (index,column_header)
+	for index, column_header in enumerate(header_row):
+		print (index,column_header)
 
 	#Get dates and high temperatures from this file.
 	dates,rainfall=[],[]

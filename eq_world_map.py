@@ -8,8 +8,13 @@ filename = 'data/eq_data_30_day_m1.json'
 with open (filename) as f:
 	all_eq_data = json.load(f)
 
-all_eq_dicts=all_eq_data['features']
+#Put the data into a readable file.
+readable_file = 'data/readable_eq_data_30_day_m1.json'
+with open(readable_file, 'w') as f:
+	json.dump(all_eq_data, f, indent=4)
 
+all_eq_dicts=all_eq_data['features']
+plot_title = all_eq_data['metadata']['title']
 mags,lons,lats, hover_texts =[],[],[],[]
 for eq_dicts in all_eq_dicts:
 	mags.append(eq_dicts['properties']['mag'])
@@ -33,7 +38,7 @@ data = [{
 		'colorbar':{'title':'Magnitude'},
 	},
 }]
-my_layout = Layout(title='Global Earthquakes')
+my_layout = Layout(title=plot_title)
 
 fig ={'data':data, 'layout':my_layout}
 offline.plot(fig, filename ='global_earthquakes.html')
