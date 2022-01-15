@@ -11,8 +11,8 @@ with open (filename) as f:
 all_cp_dicts=all_cp_data
 lons,lats,hover_texts =[],[],[]
 for cp_dicts in all_cp_dicts['objects']['capitals']:
-	lons.append(cp_dicts['geometries'][1]['coordinates'][0])
-	lats.append(cp_dicts['geometries'][1]['coordinates'][1])
+	lons.append(cp_dicts['geometries']['coordinates'][0])
+	lats.append(cp_dicts['geometries']['coordinates'][1])
 	hover_texts.append(cp_dicts['properties']['capital'])
 
 #Map the earthquakes.
