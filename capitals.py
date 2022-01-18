@@ -10,25 +10,22 @@ with open (filename) as f:
 
 all_cp_dicts=all_cp_data
 lons,lats,hover_texts =[],[],[]
-for cp_dicts in all_cp_dicts['objects']['capitals']:
-	lons.append(cp_dicts['geometries']['coordinates'][0])
-	lats.append(cp_dicts['geometries']['coordinates'][1])
-	hover_texts.append(cp_dicts['properties']['capital'])
+for geometry in all_cp_dicts['objects']['capitals']['geometries']:
+	
+	lons.append(geometry['coordinates'][0])
+	lats.append(geometry['coordinates'][1])
+	hover_texts.append(geometry['properties'].get('city',""))
 
 #Map the earthquakes.
-data = [{
-	'type':'scattergeo',
-	'lon':lons,
-	'lat':lats,
-	'text': hover_texts,
-	'marker':{
-		'size': [5],
-		#'color': mags,
-		#'colorscale': 'plasma',
-		#'reversescale':True,
-		#'colorbar':{'title':'Magnitude'},
-	},
-}]
+data = Scattergeo(
+	lat= lats,
+	lon = lons,
+	text = hover_texts,
+	marker= dict(
+		size =5)
+		)
+	
+	
 my_layout = Layout(title="Capital Cities")
 
 fig ={'data':data, 'layout':my_layout}
